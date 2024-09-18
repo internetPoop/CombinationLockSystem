@@ -8,9 +8,10 @@ public class CombinationLockManager : MonoBehaviour
     [SerializeField] Text KeyText_0;    //Button_0のテキスト
     [SerializeField] Text KeyText_1;    //Button_1のテキスト
     [SerializeField] Text KeyText_2;    //Button_2のテキスト
-
-
-
+    [SerializeField] Animator CombinationLockAnim;  //解錠のアニメーション
+    [SerializeField] Button Button_0;
+    [SerializeField] Button Button_1;
+    [SerializeField] Button Button_2;
 
     public void OnClickButton_0()
     {
@@ -63,9 +64,17 @@ public class CombinationLockManager : MonoBehaviour
     void CheckPassword()    //正誤判定
     {
         //CorrectPassword
-        if(KeyText_0.text == "1" && KeyText_1.text == "2" && KeyText_2.text == "3")
+        if(KeyText_0.text == "3" && KeyText_1.text == "8" && KeyText_2.text == "4")
         {
             Debug.Log("Correct");
+
+
+            Button_0.interactable = false;    //ボタンの入力受付禁止
+            Button_1.interactable = false;
+            Button_2.interactable = false;
+
+            CombinationLockAnim.SetTrigger("Unlock_Trigger");   //Animator ControllerのUnlockTriggerをセットする
+
         }
     }
 
